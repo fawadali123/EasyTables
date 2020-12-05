@@ -4,7 +4,7 @@ import Header from "./Header";
 import { Text, Separator, DefaultPalette, Button} from 'office-ui-fabric-react';
 import NavStepBar from './NavStepBar';
 
-
+const data = require('../../../custom.json');
 export interface AppProps {
   onClick: any;
 }
@@ -35,10 +35,12 @@ export default class StepTwo extends React.Component<AppProps> {
 
           <img style={{margin: 50}} width="200" height="auto" src="assets/image.png"  />
           <Text variant={'xLarge'}>Pick a Style</Text>
-          <Text variant={'large'}>Pick a style to instantly format your data.</Text>
+          <Text variant={'large'}>Pick a style to instantly format your data. </Text>
           <Separator></Separator>
-          <img onClick={() => this.props.onClick('stepthree')} style={{margin: 30}} width="270" height="auto" src="assets/tableoption1.png"  />
-          <img onClick={() => this.props.onClick('stepthree')} style={{margin: 30}} width="270" height="auto" src="assets/tableoption2.png"  />
+          {data.style_options.map((item) => {
+            return <img onClick={() => this.props.onClick('stepthree')}
+               style={{margin: 30}} width="270" height="auto" key={item.name} src={item.image_path}  />
+          })}
 
         </Stack>
         <Stack verticalAlign="end" grow horizontalAlign="end" styles={stackStyles}>

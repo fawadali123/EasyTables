@@ -1,0 +1,14 @@
+{
+  "style_options": [
+    {
+      "name": "bear",
+      "image_path": "assets/bear.png",
+      "styles": {}
+    },
+    {
+      "name": "minty",
+      "image_path": "assets/minty.png",
+      "styles": {}
+    }
+  ]
+}
