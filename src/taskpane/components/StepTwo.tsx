@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackTokens, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 import Header from "./Header";
-import { Text, Separator, DefaultPalette} from 'office-ui-fabric-react';
+import { Text, Separator, DefaultPalette, Button} from 'office-ui-fabric-react';
 import NavStepBar from './NavStepBar';
 
 
@@ -14,6 +14,13 @@ const verticalGapStackTokens: IStackTokens = {
   childrenGap: 10,
   padding: 10,
 };
+const stackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.neutralLight,
+    padding: 10,
+  }
+}
+
 
 export default class StepTwo extends React.Component<AppProps> {
   render() {
@@ -34,6 +41,15 @@ export default class StepTwo extends React.Component<AppProps> {
           <img onClick={() => this.props.onClick('stepthree')} style={{margin: 30}} width="270" height="auto" src="assets/tableoption2.png"  />
 
         </Stack>
+        <Stack verticalAlign="end" grow horizontalAlign="end" styles={stackStyles}>
+
+          <Stack.Item align="end">
+              <Button className="ms-bgColor-themePrimary ms-fontColor-white"
+                  onClick={() => this.props.onClick('stepthree')}>
+                  Next
+              </Button>
+          </Stack.Item>
+          </Stack>
       </section>
     );
   }

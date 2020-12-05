@@ -1,6 +1,4 @@
 import * as React from "react";
-import Progress from "./Progress";
-import * as excel from "./Excel.App";
 import Welcome from "./Welcome";
 import StepOne from "./StepOne";
 import StepTwo from "./StepTwo";
@@ -9,7 +7,7 @@ import Labels from "./Labels";
 import Typography from "./Typography";
 import Spacing from "./Spacing";
 import Colors from "./Colors";
-/* global Button, Header, HeroList, HeroListItem, Office */
+import Progress from "./Progress";
 
 export interface AppProps {
   title: string;
@@ -26,16 +24,6 @@ export default class App extends React.Component<AppProps, AppState> {
     this.state = {
       page: 'welcome',
     };
-  }
-
-
-  click = async () => {
-    switch (Office.context.host) {
-      case Office.HostType.Excel: {
-        const excelApp = new excel.default(this.props, this.context);
-        return excelApp.click();
-      }
-    }
   }
 
   handleClick(pageName) {

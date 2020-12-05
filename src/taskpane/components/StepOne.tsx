@@ -1,6 +1,6 @@
 
 import * as React from "react";
-import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackTokens, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 import { Text, Checkbox, Button, TextField, DefaultPalette} from 'office-ui-fabric-react';
 import Header from "./Header";
 import NavStepBar from './NavStepBar';
@@ -15,6 +15,13 @@ const verticalGapStackTokens: IStackTokens = {
   childrenGap: 10,
   padding: 10,
 };
+const stackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.neutralLight,
+    padding: 10,
+    justifyContent: "flex-end",
+  }
+}
 
 export default class StepOne extends React.Component<AppProps> {
   render() {
@@ -35,10 +42,19 @@ export default class StepOne extends React.Component<AppProps> {
             <Checkbox label="My Table has Headers"  defaultChecked />
             <Stack.Item align="baseline">
 
-              <Button onClick={() => this.props.onClick('steptwo')}>
+              <Button>
                   Auto Select
               </Button>
             </Stack.Item>
+          </Stack>
+          <Stack verticalAlign="end" grow={1} horizontalAlign="end" styles={stackStyles}>
+
+          <Stack.Item grow={1} align="end">
+              <Button className="ms-bgColor-themePrimary ms-fontColor-white"
+                  onClick={() => this.props.onClick('steptwo')}>
+                  Next
+              </Button>
+          </Stack.Item>
           </Stack>
         </section>
       </div>

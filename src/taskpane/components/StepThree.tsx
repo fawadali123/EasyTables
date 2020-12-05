@@ -1,8 +1,9 @@
 import * as React from "react";
-import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
-import { Text, ActionButton, CompoundButton, Separator, DefaultPalette} from 'office-ui-fabric-react';
+import { Stack, IStackTokens, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
+import { Text, ActionButton, Separator, DefaultPalette, Button} from 'office-ui-fabric-react';
 import Header from "./Header";
 import NavStepBar from './NavStepBar';
+import SaveTable from "./SaveTable";
 
 export interface AppProps {
   onClick: any;
@@ -12,6 +13,13 @@ const verticalGapStackTokens: IStackTokens = {
   childrenGap: 10,
   padding: 10,
 };
+const stackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.neutralLight,
+    padding: 10,
+  }
+}
+
 
 export default class StepThree extends React.Component<AppProps> {
   render() {
@@ -24,9 +32,10 @@ export default class StepThree extends React.Component<AppProps> {
 
           <Text variant={'xLarge'}>All Done!</Text>
           <Text variant={'medium'}>Your data looks great! Save this style to resue or fine tune specifics of your data below.</Text>
-          <CompoundButton primary secondaryText="Sub Text">
+          {/* <CompoundButton primary secondaryText="Sub Text">
             Save Table Style
-          </CompoundButton>
+          </CompoundButton> */}
+          <SaveTable />
           <Separator></Separator>
           <Stack tokens={verticalGapStackTokens}>
             <ActionButton iconProps={{iconName: 'Label'}} allowDisabledFocus
@@ -54,6 +63,11 @@ export default class StepThree extends React.Component<AppProps> {
               <i className={`ms-Icon ms-Icon--ChevronRight ms-smPull8`}></i>
             </ActionButton>
           </Stack>
+        </Stack>
+        <Stack verticalAlign="end" grow horizontalAlign="end" styles={stackStyles}>
+        <Stack.Item align="end">
+            <Button onClick={() => this.props.onClick('welcome')} >New Table</Button>
+        </Stack.Item>
         </Stack>
       </section>
     );

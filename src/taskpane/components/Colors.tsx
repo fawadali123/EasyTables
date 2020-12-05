@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
-import { Text, Toggle, DefaultPalette} from 'office-ui-fabric-react';
+import { Text, Toggle, DefaultPalette, SwatchColorPicker} from 'office-ui-fabric-react';
 import Header from "./Header";
 import NavStepBar from "./NavStepBar";
 
@@ -13,7 +13,11 @@ const verticalGapStackTokens: IStackTokens = {
   childrenGap: 15,
   padding: 10,
 };
-
+const colorCellsExample1 = [
+  { id: 'a', label: 'Primary Color', color: '#6200ee' },
+  { id: 'b', label: 'Secondary Color', color: '#02dbc6' },
+  { id: 'c', label: 'Text', color: '#616161' },
+];
 export default class Colors extends React.Component<AppProps> {
   render() {
     return (
@@ -33,6 +37,27 @@ export default class Colors extends React.Component<AppProps> {
 
 
             <Toggle label="Banded Columns" onText="On" offText="Off"  />
+
+            <div>Primary</div>
+            <SwatchColorPicker
+              columnCount={1}
+              cellHeight={35}
+              cellWidth={35}
+              cellShape={'square'}
+              colorCells={colorCellsExample1}
+             />
+
+            <Text variant={'large'}>Available Options</Text>
+            <Text variant={'small'}>Fine tune specific colors for the table style.</Text>
+
+            <div>Main Colors</div>
+            <SwatchColorPicker
+              columnCount={1}
+              cellHeight={35}
+              cellWidth={35}
+              cellShape={'square'}
+              colorCells={colorCellsExample1}
+             />
 
           </Stack>
         </section>
