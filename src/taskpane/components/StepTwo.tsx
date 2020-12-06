@@ -21,8 +21,21 @@ const stackStyles: IStackStyles = {
   }
 }
 
-
+const setStyles = async function setStyle(color){
+  try {
+    await Excel.run(async context => {
+      const range = context.workbook.getSelectedRange();
+      range.load("address");
+      range.format.fill.color = color;
+      await context.sync();
+      console.log(`The range address was ${range.address}.`);
+    });
+  } catch (error) {
+    console.error(error);
+  };
+};
 export default class StepTwo extends React.Component<AppProps> {
+  
   render() {
     return (
       
@@ -38,7 +51,7 @@ export default class StepTwo extends React.Component<AppProps> {
           <Text variant={'large'}>Pick a style to instantly format your data. </Text>
           <Separator></Separator>
           {data.style_options.map((item) => {
-            return <img onClick={() => this.props.onClick('stepthree')}
+            return <img onClick={() =>setStyles(item.color)}
                style={{margin: 30}} width="270" height="auto" key={item.name} src={item.image_path}  />
           })}
 
