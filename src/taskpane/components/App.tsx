@@ -16,6 +16,7 @@ export interface AppProps {
 
 export interface AppState {
   page: string;
+  tableRange: string;
 }
 
 export default class App extends React.Component<AppProps, AppState> {
@@ -23,11 +24,15 @@ export default class App extends React.Component<AppProps, AppState> {
     super(props, context);
     this.state = {
       page: 'welcome',
+      tableRange: '',
     };
   }
 
   handleClick(pageName) {
     this.setState({page: pageName});
+  }
+  setTableRange(range) {
+    this.setState({tableRange: range});
   }
 
   render() {
@@ -40,7 +45,8 @@ export default class App extends React.Component<AppProps, AppState> {
     }
     switch(this.state.page) {
       case 'stepone':
-        return <StepOne onClick={pageName => this.handleClick(pageName)} />;
+        return <StepOne onClick={pageName => this.handleClick(pageName)} 
+          setTableRange={range => this.setTableRange(range)} tableRange={this.state.tableRange} />;
       case 'steptwo':
         return <StepTwo onClick={pageName => this.handleClick(pageName)} />;
       case 'stepthree':
