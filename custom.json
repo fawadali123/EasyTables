@@ -3,11 +3,25 @@
     {
       "name": "bear",
       "image_path": "assets/bear.png",
+	  "color": "yellow",
       "styles": {}
     },
     {
       "name": "minty",
       "image_path": "assets/minty.png",
+	  "color": "green",
+      "styles": {}
+    },
+	{
+      "name": "bear2",
+      "image_path": "assets/bear.png",
+	  "color": "blue",
+	  "styles": {}
+    },
+    {
+      "name": "minty2",
+      "image_path": "assets/minty.png",
+	  "color": "red",
       "styles": {}
     }
   ]
